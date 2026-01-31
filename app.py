@@ -31,14 +31,15 @@ with st.form("input_form"):
     if submitted:
     # Prepare the input data
         input_data = pd.DataFrame({
-            'age': [age],
-            'bmi': [bmi],
-            'children': [children],
-            'bloodpressure': [bloodpressure],
-            'gender': [gender],
-            'diabetic': [diabetic],
-            'smoker': [smoker]
+            "age": [age],
+            "gender": [gender],
+            "bmi": [bmi],
+            "bloodpressure": [bloodpressure],
+            "diabetic": [diabetic],
+            "children": [children],
+            "smoker": [smoker]
         })
+         
 
         # Encode categorical variables
         input_data['gender'] = le_gender.transform(input_data['gender'])
@@ -46,7 +47,7 @@ with st.form("input_form"):
         input_data['smoker'] = le_smoker.transform(input_data['smoker'])
 
         # Scale numerical features
-        num_cols = ['age', 'bmi', 'children', 'bloodpressure']
+        num_cols = ['age', 'bmi', 'bloodpressure', 'children']
         input_data[num_cols] = scaler.transform(input_data[num_cols])
 
         # Make prediction
